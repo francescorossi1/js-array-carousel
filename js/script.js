@@ -1,8 +1,4 @@
 /*
-MILESTONE 2
-Adesso rimuoviamo tutto il markup statico e inseriamo le immagini dinamicamente servendoci dell'array fornito e un semplice ciclo for. Possiamo concatenare una stringa con un template literal oppure utilizzare gli altri metodi di manipolazione del DOM che abbiamo visto insieme. Al termine di questa fase ci ritroveremo con lo stesso slider, ma costruito dinamicamente attraverso JavaScript.
-MILESTONE 3
-Al click dell'utente sulle frecce, l'immagine attiva cambia e diventa visibile nello slider, prendendo il posto della precedente.
 BONUS 1:
 Aggiungere il ciclo infinito del carosello. Ovvero se l' immagine attiva è la prima e l'utente clicca la freccia per andare indietro, la miniatura che deve attivarsi sarà l'ultima e viceversa per l'ultima miniatura se l'utente clicca la freccia verso avanti, deve attivarsi la prima immgine.
 BONUS 2:
@@ -35,7 +31,7 @@ const display = document.querySelector('.container');
 let content = `<div id="carousel"><div class="slide">`
 
 for(let i = 0; i < arrayIndex.length; i++){
-    content += `<img src="${arrayIndex[i]}" alt="image${[i+1]}" class="d-none"></img>`
+    content += `<img src="./${arrayIndex[i]}" alt="image${[i+1]}" class="item"></img>`
 }
 
 content += `${nextButton}${prevButton}</div></div>`
@@ -43,3 +39,43 @@ content += `${nextButton}${prevButton}</div></div>`
 // Finalizzo il display
 
 display.innerHTML = content
+
+// Creo una variabile per l'elemento attivo
+
+let activeItem = 0
+
+// Creo un array per scorrere fra gli elementi attivi desiderati
+
+const activeArray = document.querySelectorAll('#carousel img');
+
+// Aggiungo la classe che funge da active
+
+activeArray[activeItem].classList.add("d-block")
+
+// Se clicco next
+
+next.addEventListener('click',function(){
+
+    // Tolgo l'active all'elemento corrente
+    activeArray[activeItem].classList.remove("d-block");
+
+    // Aumento il "contatore di active"
+    activeItem++
+
+    // E restituisco l'active al "nuovo" elemento
+    activeArray[activeItem].classList.add("d-block");
+})
+
+// Se clicco next
+
+prev.addEventListener('click',function(){
+
+    // Tolgo l'active all'elemento corrente
+    activeArray[activeItem].classList.remove("d-block");
+
+    // Diminuisco il "contatore di active"
+    activeItem--
+
+    // E restituisco l'active al "nuovo" elemento
+    activeArray[activeItem].classList.add("d-block");
+})

@@ -16,7 +16,11 @@
     border-radius: 30px;
 }
 
-#carousel img:active {
+.item{
+    display: none;
+}
+
+.item.active{
     display: block;
 }
 
@@ -27,6 +31,7 @@
     border: 0;
     padding: 0;
     font-size: 32px;
+    background-color: #fff;
 }
 
 #prev {
