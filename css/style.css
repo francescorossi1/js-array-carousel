@@ -1,0 +1,16 @@
+#carousel {
+    width: 700px;
+    height: 400px;
+    margin: 100px auto;
+}
+
+.slide {
+    height: 100%;
+}
+
+#carousel img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+}
