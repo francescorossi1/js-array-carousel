@@ -1,27 +1,54 @@
 #carousel {
     width: 700px;
-    height: 400px;
+    height: 500px;
     margin: 100px auto;
 }
 
 .slide {
-    height: 100%;
+    height: 80%;
     position: relative;
 }
 
-#carousel img {
-    height: 100%;
+.mini-slide {
+    height: 20%;
+}
+
+.mini-slide .col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mini-slide img{
+    height: 60px;
+    border-radius: 20px;
+}
+
+#carousel img{
     width: 100%;
+}
+
+#carousel .slide img {
+    height: 100%;
     object-fit: cover;
     border-radius: 30px;
 }
 
-.item{
+.slide .item{
     display: none;
 }
 
-.item.active{
+.slide .item.active{
     display: block;
+}
+
+.mini-slide .item{
+    opacity: 0.5;
+    transition: opacity 0.3s linear;
+}
+
+.mini-slide .item.active{
+    opacity: 1;
 }
 
 #carousel button {
