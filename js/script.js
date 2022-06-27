@@ -52,6 +52,7 @@ const activeArray = document.querySelectorAll('#carousel img');
 
 activeArray[activeItem].classList.add("d-block")
 
+
 // Se clicco next
 
 next.addEventListener('click',function(){
@@ -61,6 +62,11 @@ next.addEventListener('click',function(){
 
     // Aumento il "contatore di active"
     activeItem++
+
+    // * BONUS 1: Se il contatore è al massimo quando clicco, torna a 0
+    if(activeItem === activeArray.length){
+        activeItem = 0;
+    }
 
     // E restituisco l'active al "nuovo" elemento
     activeArray[activeItem].classList.add("d-block");
@@ -73,8 +79,14 @@ prev.addEventListener('click',function(){
     // Tolgo l'active all'elemento corrente
     activeArray[activeItem].classList.remove("d-block");
 
+    // * BONUS 1: Se il contatore è al minimo quando clicco, torna al massimo
+    if(activeItem === 0){
+        activeItem = activeArray.length;
+    }
+    
     // Diminuisco il "contatore di active"
     activeItem--
+
 
     // E restituisco l'active al "nuovo" elemento
     activeArray[activeItem].classList.add("d-block");
