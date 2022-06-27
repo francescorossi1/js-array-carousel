@@ -1,6 +1,4 @@
 /*
-MILESTONE 1
-Per prima cosa, creiamo il markup statico: costruiamo il container e inseriamo l'immagine grande in modo da poter stilare lo slider; avremo così la struttura base e gli stili pronti per poterci poi concentrare solamente sull'aspetto logico.
 MILESTONE 2
 Adesso rimuoviamo tutto il markup statico e inseriamo le immagini dinamicamente servendoci dell'array fornito e un semplice ciclo for. Possiamo concatenare una stringa con un template literal oppure utilizzare gli altri metodi di manipolazione del DOM che abbiamo visto insieme. Al termine di questa fase ci ritroveremo con lo stesso slider, ma costruito dinamicamente attraverso JavaScript.
 MILESTONE 3
@@ -16,3 +14,32 @@ Consigli del giorno:
 2. Scriviamo sempre prima per punti il nostro algoritmo in italiano per capire cosa vogliamo fare
 3. Al momento giusto (starà a voi capire quale) rispondete a questa domanda: "Quanti cicli servono?"
 */
+
+// Steps
+
+// Creo un array con il percorso relativo delle immagini
+
+const arrayIndex = ['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg'];
+
+// Creo le frecce per gestire le slide
+
+const nextButton = `<button id="next"><i class="bi bi-arrow-right-circle-fill"></i></button>`
+const prevButton = `<button id="prev"><i class="bi bi-arrow-left-circle-fill"></i></i></button>`
+
+// Creo il display per il mio html
+
+const display = document.querySelector('.container');
+
+// Riempio il div coi contenuti
+
+let content = `<div id="carousel"><div class="slide">`
+
+for(let i = 0; i < arrayIndex.length; i++){
+    content += `<img src="${arrayIndex[i]}" alt="image${[i+1]}" class="d-none"></img>`
+}
+
+content += `${nextButton}${prevButton}</div></div>`
+
+// Finalizzo il display
+
+display.innerHTML = content
